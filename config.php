@@ -8,8 +8,6 @@ $mysql = new mysqli(
 );
 $mysql -> set_charset('utf8');
 
-if($mysql == TRUE){
-    echo "banco conectado";
-} else {
+if($mysql == FALSE){
     echo "erro na conexão";
 }
