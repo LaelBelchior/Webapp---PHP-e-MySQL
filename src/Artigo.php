@@ -28,4 +28,11 @@ class Artigo{
         return $artigo;
     }
 
+    public function adicionar(string $titulo, string $conteudo): void
+    {
+        $adicionaArtigo = $this -> mysql -> prepare("INSERT INTO artigos(titulo, conteudo) VALUES(?,?);");
+        $adicionaArtigo -> bind_param('ss', $titulo, $conteudo);
+        $adicionaArtigo -> execute();
+    }
+
 }
