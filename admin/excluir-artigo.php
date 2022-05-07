@@ -1,3 +1,18 @@
+<?php
+
+require '../config.php';
+require '../src/Artigo.php';
+require '../src/redireciona.php';
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $artigo = new Artigo($mysql);
+    $artigo -> remover($_POST['id']);
+
+    redireciona('/index.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,7 +27,7 @@
         <h1>Você realmente deseja excluir o artigo?</h1>
         <form method="post" action="excluir-artigo.html">
             <p>
-                <input type="hidden" name="id" value="" />
+                <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" />
                 <button class="botao">Excluir</button>
             </p>
         </form>

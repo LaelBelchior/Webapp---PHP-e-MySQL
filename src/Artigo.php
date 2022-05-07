@@ -35,4 +35,11 @@ class Artigo{
         $adicionaArtigo -> execute();
     }
 
+    public function remover(string $id): void
+    {
+        $removeArtigo = $this -> mysql -> prepare('DELETE FROM artigos WHERE id = ?');
+        $removeArtigo -> bind_param('s', $id);
+        $removeArtigo -> execute();
+    }
+
 }
